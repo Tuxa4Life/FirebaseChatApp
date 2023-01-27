@@ -6,6 +6,13 @@ body {
     background-color: rgb(230, 230, 230);
 }
 
+@media only screen and (max-width: 600px) {
+    .messageContainer, .action.input {
+        width: 100% !important;
+        left: unset !important;
+    }  
+}
+
 .chat.container {
     height: 100vh;
     position: relative;
@@ -53,7 +60,6 @@ body {
     height: 60vh;
     z-index: 5;
 }
-
 
 .messageHolder {
     width: 100%;
