@@ -1,0 +1,91 @@
+html {
+    overflow-y: hidden;
+}
+
+body {
+    background-color: rgb(230, 230, 230);
+}
+
+.chat.container {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.messageContainer {
+    position: absolute;
+    top: 40px;
+    left: 20%;
+
+    overflow-y: scroll;
+
+    width: 60%;
+    background-color: white;
+    border-radius: 5px;
+    height: 80vh;
+    border: 1px rgb(181, 181, 181) solid;
+}
+
+.action.input {
+    position: absolute;
+    bottom: 40px;
+    width: 60%;
+    border-radius: 5px;
+    left: 20%;
+    border: 1px rgb(181, 181, 181) solid;
+}
+
+.button.signout {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.button.account {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+}
+.profileCard {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    height: 60vh;
+    z-index: 5;
+}
+
+
+.messageHolder {
+    width: 100%;
+    display: flex;
+}
+
+.message {
+    width: 70%;
+    height: 50px;
+    margin: 7px;
+
+    display: flex;
+    align-items: center;  
+}
+.author {
+    justify-content: right !important;
+}
+.author .message {
+    flex-direction: row-reverse !important;
+}
+
+.message img {
+    height: 80%;
+    border-radius: 5px;
+}
+
+.content {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    word-wrap: break-word;
+    padding: 7px;
+    border-radius: 7px;
+    background-color: rgb(229, 229, 229);
+}
