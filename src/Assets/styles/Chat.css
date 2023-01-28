@@ -12,13 +12,18 @@ body {
 
 @media only screen and (max-width: 600px) {
     .messageContainer, .action.input {
-        width: 100% !important;
+        width: 95% !important;
         left: unset !important;
     }  
+    .navbar {
+        width: 95% !important;
+    }
 }
 
 .chat.container {
     height: 100vh;
+    width: 100% !important;
+    margin: 0 !important;
     position: relative;
     display: flex;
     justify-content: center;
@@ -26,23 +31,28 @@ body {
 
 .messageContainer {
     position: absolute;
-    top: 40px;
-    left: 20%;
+    top: 10px;
+    left: 25%;
 
     overflow-y: scroll;
 
-    width: 60%;
+    width: 50%;
     background-color: white;
     border-radius: 5px;
-    height: 80vh;
+    height: 90vh;
     border: 1px rgb(181, 181, 181) solid;
+
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .navbar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 50%;
     height: 40px;
     border-top: 5px;
     z-index: 1;
@@ -58,10 +68,10 @@ body {
 }
 .action.input {
     position: absolute;
-    bottom: 40px;
-    width: 60%;
+    bottom: 15px;
+    width: 50%;
     border-radius: 5px;
-    left: 20%;
+    left: 25%;
     border: 1px rgb(181, 181, 181) solid;
 }
 
@@ -79,12 +89,11 @@ body {
 }
 
 .message {
-    width: 70%;
-    height: 50px;
+    width: 80%;
+    height: auto;
     margin: 7px;
 
     display: flex;
-    align-items: center;  
 }
 .author {
     justify-content: right !important;
@@ -94,7 +103,7 @@ body {
 }
 
 .message img {
-    height: 80%;
+    height: 50px;
     border-radius: 5px;
 }
 
@@ -106,4 +115,7 @@ body {
     padding: 7px;
     border-radius: 7px;
     background-color: rgb(229, 229, 229);
+
+    display: flex;
+    align-items: center;
 }

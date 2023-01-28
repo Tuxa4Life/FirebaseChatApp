@@ -6,7 +6,8 @@ const Message = ({ author, img, content }) => {
             <div className="message">
                 <img src={img} />
 
-                <p className="content">{content}</p>         
+                <p className="content">{content}</p>     
+                    
             </div>
         </div>
     )

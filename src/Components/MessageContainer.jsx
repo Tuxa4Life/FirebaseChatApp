@@ -9,14 +9,13 @@ const MessageContainer = ({authorId, pfpCard}) => {
     const autoScrollDummy = useRef()
     
     useEffect(() => {
-        const q = query(messageRefs, orderBy('date', 'asc'), limit(50))
+        const q = query(messageRefs, orderBy('date', 'desc'), limit(50))
         
         onSnapshot(q, (snap) => {
             let tmp = []
             snap.docs.forEach(e => {
                 tmp.push({...e.data(), id: e.id})
             })
-            
             
             setData(tmp)
             autoScrollDummy.current.scrollIntoView({behaviour: 'smooth'})
@@ -25,7 +24,7 @@ const MessageContainer = ({authorId, pfpCard}) => {
 
     const messages = data.map((e, i) => {
         let authorState = ''
-        if (e.author_id == authorId) {
+        if (e.author_id === authorId) {
             authorState = 'author'
         }
 
@@ -34,10 +33,10 @@ const MessageContainer = ({authorId, pfpCard}) => {
 
     return (
         <div className="messageContainer">
-            <Nav pfpCard={pfpCard}/>
 
-            { messages }
             <div ref={autoScrollDummy} className="autoScrollDummy"></div>
+            { messages }
+            <Nav pfpCard={pfpCard}/>
         </div>
     )
 }
