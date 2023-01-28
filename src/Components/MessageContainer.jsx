@@ -6,10 +6,14 @@ import { messageRefs } from "../Firebase/FirebaseApp";
 
 const MessageContainer = ({authorId, pfpCard}) => {
     const [data, setData] = useState([])
+    const [dataLimit, setDataLimit] = useState(50)
+    const [skipScroll, setSkipScroll] = useState(false)
+
     const autoScrollDummy = useRef()
+    const autoLoadDummy = useRef()
     
     useEffect(() => {
-        const q = query(messageRefs, orderBy('date', 'desc'), limit(50))
+        const q = query(messageRefs, orderBy('date', 'desc'), limit(dataLimit))
         
         onSnapshot(q, (snap) => {
             let tmp = []
@@ -18,9 +22,13 @@ const MessageContainer = ({authorId, pfpCard}) => {
             })
             
             setData(tmp)
-            autoScrollDummy.current.scrollIntoView({behaviour: 'smooth'})
+            if (!skipScroll) {
+                autoScrollDummy.current.scrollIntoView({behaviour: 'smooth'})
+            } else {
+                setSkipScroll(false)
+            }
         })
-    }, [])
+    }, [dataLimit])
 
     const messages = data.map((e, i) => {
         let authorState = ''
@@ -31,12 +39,23 @@ const MessageContainer = ({authorId, pfpCard}) => {
         return <Message key={i} img={e.author_img} content={e.content} author={authorState}/>
     })
 
+    const autoLoad = () => {
+        if (autoLoadDummy.current.getBoundingClientRect().bottom > 0) {
+            setSkipScroll(true)
+            setDataLimit(dataLimit + 15)
+        }
+    }
+
     return (
-        <div className="messageContainer">
+        <div onScroll={autoLoad} className="messageContainer">
 
             <div ref={autoScrollDummy} className="autoScrollDummy"></div>
-            { messages }
+
             <Nav pfpCard={pfpCard}/>
+            
+            { messages }
+            
+            <div style={{marginBottom: '50px'}} ref={autoLoadDummy} className="autoLoadDummy"></div>
         </div>
     )
 }
