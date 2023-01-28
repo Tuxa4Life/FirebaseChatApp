@@ -13,9 +13,7 @@ const Input = ({ creds }) => {
             content: content,
             date: serverTimestamp()
         })
-        .then(() => {
-            e.target.reset()
-        })
+        e.target.reset()
     }
 
     return (

@@ -1,0 +1,81 @@
+.settingsHolder {
+    position: relative;
+    width: 45px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.button.cog {
+    width: 45px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cog.icon {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.menu {
+    --targetHeight: 80px;
+    position: absolute;
+    bottom: calc(-10px - var(--targetHeight));
+    right: 0;
+
+    background-color: rgb(227, 227, 227);
+    width: 45px;
+    height: var(--targetHeight);
+    border-radius: 5px;
+    border: 1px rgb(178, 178, 178) solid;
+
+    z-index: -5;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.menu button {
+    margin: 2px 0 !important;
+}
+.false-drop {
+    animation-name: slideUp;
+    animation-duration: .2s;
+    animation-fill-mode: both;
+}
+.true-drop {
+    animation-name: slideDown;
+    animation-duration: .2s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideDown {
+    0% {
+        z-index: -5;
+        opacity: 0;
+        bottom: -10px;
+        height: 0px;
+    }
+
+    100% {
+        z-index: 4;
+        opacity: 1;
+        bottom: calc(-10px - var(--targetHeight));
+        height: var(--targetHeight);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        z-index: 4;
+        opacity: 1;
+        bottom: calc(-10px - var(--targetHeight));
+        height: var(--targetHeight);
+    }
+
+    100% {
+        z-index: -5;
+        opacity: 0;
+        bottom: -10px;
+        height: 0;
+    }
+}

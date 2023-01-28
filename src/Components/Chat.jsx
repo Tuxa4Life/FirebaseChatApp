@@ -10,12 +10,6 @@ const Chat = ({creds}) => {
 
     return (
         <div style={styles} className="ui chat container">
-            <button onClick={logOut} className="ui icon secondary inverted button signout" title="Sign out">
-                <i className="sign-out icon"></i>
-            </button>
-            <button onClick={() => setProfileState(!profileState)} className="ui icon secondary inverted button account" title="Sign out">
-                <i className="user icon"></i>
-            </button>
 
             { 
                 profileState ? 
@@ -29,7 +23,7 @@ const Chat = ({creds}) => {
                 : null 
             }
 
-            <MessageContainer authorId={creds.uid}/>
+            <MessageContainer authorId={creds.uid} pfpCard={() => setProfileState(!profileState)}/>
             <Input creds={creds}/>
 
         </div>
