@@ -4,7 +4,7 @@ import Nav from "./Navbar";
 import { onSnapshot, orderBy, query, limit } from "firebase/firestore";
 import { messageRefs } from "../Firebase/FirebaseApp";
 
-const MessageContainer = ({authorId, pfpCard}) => {
+const MessageContainer = ({authorId, pfpCard, creds}) => {
     const [data, setData] = useState([])
     const [dataLimit, setDataLimit] = useState(50)
     const [skipScroll, setSkipScroll] = useState(false)
@@ -36,7 +36,7 @@ const MessageContainer = ({authorId, pfpCard}) => {
             authorState = 'author'
         }
 
-        return <Message key={i} img={e.author_img} content={e.content} author={authorState}/>
+        return <Message key={i} img={e.author_img} id={e.author_id} content={e.content} author={authorState} authorName={e.author_name} date={e.dateString} creds={creds}/>
     })
 
     const autoLoad = () => {

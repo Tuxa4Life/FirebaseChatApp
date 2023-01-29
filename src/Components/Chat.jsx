@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from '../Assets/styles/Chat.css'
-import { logOut } from "../Firebase/FirebaseApp";
 import Input from "./Input";
 import MessageContainer from "./MessageContainer";
 import Profile from "./Profile";
@@ -23,7 +22,7 @@ const Chat = ({creds}) => {
                 : null 
             }
 
-            <MessageContainer authorId={creds.uid} pfpCard={() => setProfileState(!profileState)}/>
+            <MessageContainer authorId={creds.uid} pfpCard={() => setProfileState(!profileState)} creds={creds}/>
             <Input creds={creds}/>
 
         </div>

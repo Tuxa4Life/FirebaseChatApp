@@ -4,7 +4,6 @@ import { logOut } from "../Firebase/FirebaseApp";
 
 const SettingsDropdown = ({pfpCard}) => {
     const [settings, setSettings] = useState(false)
-
     const btnRef = useRef()
 
     useEffect(() => {

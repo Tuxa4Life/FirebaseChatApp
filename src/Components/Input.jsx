@@ -10,8 +10,10 @@ const Input = ({ creds }) => {
         addDoc(messageRefs, {
             author_id: creds.uid,
             author_img: creds.photoURL,
+            author_name: creds.displayName,
             content: content,
-            date: serverTimestamp()
+            date: serverTimestamp(),
+            dateString: `${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
         })
         e.target.reset()
     }
